@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-const data = await fs.readFile(
-   path.join(process.cwd(), 'src/__mocks__/tasks/tasks.json')
-);
+import data from '@/__mocks__/tasks/tasks.json'
 
 const initialState = {
    tasks: data,

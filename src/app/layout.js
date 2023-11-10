@@ -1,5 +1,5 @@
 import { Inter as FontSans } from 'next/font/google';
-import { Providers } from '@/store/provider';
+import { Providers } from '@/store/providers';
 
 import './globals.css';
 import { cn } from '../lib/utils';
@@ -9,7 +9,7 @@ export const fontSans = FontSans({
   variable: '--font-sans',
 });
 
-export default async function RootLayout({ children }) {
+export default function RootLayout({ children }) {
   return (
     <Providers>
       <html lang='en'>
@@ -23,5 +23,5 @@ export default async function RootLayout({ children }) {
         </body>
       </html>
     </Providers>
-  );
+    );
 }

@@ -6,10 +6,6 @@ export const store= configureStore({
    reducer: {
       task: taskSlice.reducer
    },
-   middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false
-   })
 })
 
 // export default the store 

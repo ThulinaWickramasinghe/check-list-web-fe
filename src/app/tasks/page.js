@@ -1,14 +1,12 @@
 "use client"
 
-import { useDispatch, useSelector } from 'react-redux';
-
 import { columns } from '@/components/ui/columns';
 import { DataTable } from '@/components/ui/data-table';
 import { UserNav } from '@/components/ui/user-nav';
-import { taskSchema } from '@/__mocks__/tasks/schema';
+import { useSelector } from 'react-redux';
 
 export default function TaskPage() {
-  const tasks = [];
+  const tasks = useSelector((state) => state.task.tasks);
 
   return (
     <div className='hidden h-full flex-1 flex-col space-y-8 p-8 md:flex'>
