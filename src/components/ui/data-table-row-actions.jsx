@@ -2,7 +2,7 @@
 
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 import { useDispatch } from 'react-redux';
-import {deleteTask} from '@/store/slices/task'
+import { deleteTask } from '@/store/slices/task';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -12,11 +12,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-import { taskSchema } from '@/__mocks__/tasks/schema';
-
 export function DataTableRowActions({ row }) {
-  const dispatch = useDispatch()
-  const task = taskSchema.parse(row.original);
+  const dispatch = useDispatch();
 
   return (
     <DropdownMenu>
@@ -31,9 +28,13 @@ export function DataTableRowActions({ row }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='w-[160px]'>
         <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem onSelect={() => {
-          dispatch(deleteTask(row.getValue('id')))
-          }}>Delete</DropdownMenuItem>
+        <DropdownMenuItem
+          onSelect={() => {
+            dispatch(deleteTask(row.getValue('id')));
+          }}
+        >
+          Delete
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

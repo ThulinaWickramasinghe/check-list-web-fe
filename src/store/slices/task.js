@@ -29,4 +29,4 @@ export const taskSlice = createSlice({
 });
 
 // export the action
-export const {toggleStatus, deleteTask, addTask} = taskSlice.actions;
+export const { toggleStatus, deleteTask, addTask } = taskSlice.actions;

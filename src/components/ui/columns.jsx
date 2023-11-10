@@ -18,8 +18,8 @@ export const columns = [
         <Checkbox
           checked={'done' === row.getValue('status')}
           onCheckedChange={(value) => {
-            row.toggleSelected(!!value)
-            store.dispatch(toggleStatus({id: row.getValue('id')}))
+            row.toggleSelected(!!value);
+            store.dispatch(toggleStatus({ id: row.getValue('id') }));
           }}
           aria-label='Select row'
           className='translate-y-[2px]'
