@@ -29,9 +29,7 @@ export function DataTableRowActions({ row }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='w-[160px]'>
         <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem>
-          Delete
-        </DropdownMenuItem>
+        <DropdownMenuItem>Delete</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

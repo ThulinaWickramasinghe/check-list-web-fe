@@ -1,7 +1,4 @@
-import {
-  CheckCircledIcon,
-  CircleIcon,
-} from '@radix-ui/react-icons';
+import { CheckCircledIcon, CircleIcon } from '@radix-ui/react-icons';
 
 export const statuses = [
   {

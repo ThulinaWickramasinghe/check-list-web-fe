@@ -2,7 +2,6 @@
 
 import { Checkbox } from '@/components/ui/checkbox';
 
-
 import { DataTableColumnHeader } from '@/components/ui/data-table-column-header';
 import { DataTableRowActions } from '@/components/ui/data-table-row-actions';
 
@@ -12,15 +11,16 @@ export const columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Status' />
     ),
-    cell: ({ row }) =>{
+    cell: ({ row }) => {
       return (
-      <Checkbox
-        checked={'done' === row.getValue('status')}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label='Select row'
-        className='translate-y-[2px]'
-      />
-    )},
+        <Checkbox
+          checked={'done' === row.getValue('status')}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label='Select row'
+          className='translate-y-[2px]'
+        />
+      );
+    },
     enableHiding: false,
   },
   {
@@ -40,9 +40,7 @@ export const columns = [
     cell: ({ row }) => {
       return (
         <div className='flex space-x-2'>
-          <span className='font-medium'>
-            {row.getValue('title')}
-          </span>
+          <span className='font-medium'>{row.getValue('title')}</span>
         </div>
       );
     },
