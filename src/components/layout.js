@@ -5,8 +5,8 @@ import store from "@/store";
 
 export default function Layout({ children }) {
   return (
-        <Provider store={store}>
-          {children}
-        </Provider>
+    <Provider store={store}>
+      {children}
+    </Provider>
   );
 }

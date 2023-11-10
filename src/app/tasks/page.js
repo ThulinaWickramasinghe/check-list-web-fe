@@ -1,6 +1,5 @@
 "use client"
 
-import { z } from 'zod';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { columns } from '@/components/ui/columns';

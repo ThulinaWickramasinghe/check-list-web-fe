@@ -1,29 +1,27 @@
-import Layout from '@/components/layout'
-
 import { Inter as FontSans } from 'next/font/google';
-import { Provider } from "react-redux";
+import { Providers } from '@/store/provider';
 
 import './globals.css';
 import { cn } from '../lib/utils';
-
-import store from "@/store";
 
 export const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
-    <html lang='en'>
-      <body
-        className={cn(
-          'bg-background min-h-screen font-sans antialiased',
-          fontSans.variable
-        )}
-      >
-        <Layout>{children}</Layout>
-      </body>
-    </html>
+    <Providers>
+      <html lang='en'>
+        <body
+          className={cn(
+            'bg-background min-h-screen font-sans antialiased',
+            fontSans.variable
+          )}
+        >
+          {children}
+        </body>
+      </html>
+    </Providers>
   );
 }

@@ -2,10 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import { taskSlice } from './slices/task'
 
 // config the store 
-const store= configureStore({
+export const store= configureStore({
    reducer: {
       task: taskSlice.reducer
-   }
+   },
+   middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false
+   })
 })
 
 // export default the store 
