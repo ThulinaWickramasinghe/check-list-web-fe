@@ -1,7 +1,8 @@
 'use client';
 
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
-import { Row } from '@tanstack/react-table';
+import { useDispatch } from 'react-redux';
+import {deleteTask} from '@/store/slices/task'
 
 import { Button } from '@/components/ui/button';
 import {
@@ -14,6 +15,7 @@ import {
 import { taskSchema } from '@/__mocks__/tasks/schema';
 
 export function DataTableRowActions({ row }) {
+  const dispatch = useDispatch()
   const task = taskSchema.parse(row.original);
 
   return (
@@ -29,7 +31,9 @@ export function DataTableRowActions({ row }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='w-[160px]'>
         <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem>Delete</DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => {
+          dispatch(deleteTask(row.getValue('id')))
+          }}>Delete</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -13,14 +13,14 @@ export const taskSlice = createSlice({
     toggleStatus(state, action) {
       state.tasks = state.tasks.map((task) => {
         if (task.id === action.payload.id) {
-          task.status = action.payload.status;
+          task.status = task.status === 'todo' ? 'done' : 'todo';
         }
 
         return task;
       });
     },
     deleteTask(state, action) {
-      state.tasks = state.tasks.filter((task) => task.id !== action.payload.id);
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
     addTask(state, action) {
       state.tasks = [action.payload, ...state.tasks];
@@ -29,4 +29,4 @@ export const taskSlice = createSlice({
 });
 
 // export the action
-export const taskAction = taskSlice.actions;
+export const {toggleStatus, deleteTask, addTask} = taskSlice.actions;
