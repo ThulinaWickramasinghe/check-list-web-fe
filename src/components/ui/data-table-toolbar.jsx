@@ -1,14 +1,10 @@
 'use client';
 
 import { Cross2Icon } from '@radix-ui/react-icons';
-import { Table } from '@tanstack/react-table';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { DataTableViewOptions } from '@/components/ui/data-table-view-options';
-
-import { priorities, statuses } from '@/app/dummy-data/data/data';
-import { DataTableFacetedFilter } from './data-table-faceted-filter';
 
 export function DataTableToolbar({ table }) {
   const isFiltered = table.getState().columnFilters.length > 0;
@@ -24,20 +20,6 @@ export function DataTableToolbar({ table }) {
           }
           className='h-8 w-[150px] lg:w-[250px]'
         />
-        {table.getColumn('status') && (
-          <DataTableFacetedFilter
-            column={table.getColumn('status')}
-            title='Status'
-            options={statuses}
-          />
-        )}
-        {table.getColumn('priority') && (
-          <DataTableFacetedFilter
-            column={table.getColumn('priority')}
-            title='Priority'
-            options={priorities}
-          />
-        )}
         {isFiltered && (
           <Button
             variant='ghost'
