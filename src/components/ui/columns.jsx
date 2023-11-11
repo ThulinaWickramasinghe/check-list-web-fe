@@ -1,9 +1,9 @@
 'use client';
 
 import { Checkbox } from '@/components/ui/checkbox';
-
 import { DataTableColumnHeader } from '@/components/ui/data-table-column-header';
 import { DataTableRowActions } from '@/components/ui/data-table-row-actions';
+
 import store from '@/store';
 import { toggleStatus } from '@/store/slices/task';
 
@@ -17,8 +17,7 @@ export const columns = [
       return (
         <Checkbox
           checked={'done' === row.getValue('status')}
-          onCheckedChange={(value) => {
-            row.toggleSelected(!!value);
+          onCheckedChange={() => {
             store.dispatch(toggleStatus({ id: row.getValue('id') }));
           }}
           aria-label='Select row'

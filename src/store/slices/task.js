@@ -25,8 +25,17 @@ export const taskSlice = createSlice({
     addTask(state, action) {
       state.tasks = [action.payload, ...state.tasks];
     },
+    editTask(state, action) {
+      state.tasks = state.tasks.map((task) => {
+        if (task.id === action.payload.id) {
+          task.title = action.payload.title;
+        }
+        return task;
+      });
+    },
   },
 });
 
 // export the action
-export const { toggleStatus, deleteTask, addTask } = taskSlice.actions;
+export const { toggleStatus, deleteTask, addTask, editTask } =
+  taskSlice.actions;
