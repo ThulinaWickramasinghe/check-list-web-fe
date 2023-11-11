@@ -1,18 +1,12 @@
 'use client';
 
+import { deleteTask, editTask } from '@/store/slices/task';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteTask, editTask } from '@/store/slices/task';
 
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import {
   Dialog,
   DialogContent,
@@ -22,6 +16,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -76,19 +76,7 @@ export function DataTableRowActions({ row }) {
           </DialogHeader>
           <div className='grid gap-4 py-4'>
             <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='username' className='text-right'>
-                ID
-              </Label>
-              <Input
-                id='id'
-                name='id'
-                defaultValue={row.getValue('id')}
-                className='col-span-3'
-                disabled
-              />
-            </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='name' className='text-right'>
+              <Label htmlFor='title' className='text-right'>
                 Title
               </Label>
               <Input
