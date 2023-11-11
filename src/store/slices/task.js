@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
 import data from '@/__mocks__/tasks/tasks.json';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   tasks: data,
@@ -23,7 +23,13 @@ export const taskSlice = createSlice({
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
     addTask(state, action) {
-      state.tasks = [action.payload, ...state.tasks];
+      state.tasks = [
+        {
+          id: `TASK-${initialState.tasks.length}`,
+          title: action.payload.title,
+        },
+        ...state.tasks,
+      ];
     },
     editTask(state, action) {
       state.tasks = state.tasks.map((task) => {
