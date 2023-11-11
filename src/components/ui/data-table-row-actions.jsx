@@ -31,7 +31,7 @@ export function DataTableRowActions({ row }) {
   const [open, setOpen] = useState(false);
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    dispatch(editTask({ id: e.target.id.value, title: e.target.title.value }));
+    dispatch(editTask({ id: row.original.id, title: e.target.title.value }));
     setOpen(false);
   };
 
@@ -59,7 +59,7 @@ export function DataTableRowActions({ row }) {
           </DialogTrigger>
           <DropdownMenuItem
             onSelect={() => {
-              dispatch(deleteTask(row.getValue('id')));
+              dispatch(deleteTask(row.original.id));
             }}
           >
             Delete

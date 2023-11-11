@@ -5,7 +5,6 @@ const initialState = {
   tasks: data,
 };
 
-// create a slice
 export const taskSlice = createSlice({
   name: 'task',
   initialState,
@@ -42,6 +41,5 @@ export const taskSlice = createSlice({
   },
 });
 
-// export the action
 export const { toggleStatus, deleteTask, addTask, editTask } =
   taskSlice.actions;

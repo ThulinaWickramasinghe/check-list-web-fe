@@ -18,22 +18,13 @@ export const columns = [
         <Checkbox
           checked={'done' === row.getValue('status')}
           onCheckedChange={() => {
-            store.dispatch(toggleStatus({ id: row.getValue('id') }));
+            store.dispatch(toggleStatus({ id: row.original.id }));
           }}
           aria-label='Select row'
           className='translate-y-[2px]'
         />
       );
     },
-    enableHiding: false,
-  },
-  {
-    accessorKey: 'id',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='ID' />
-    ),
-    cell: ({ row }) => <div className='w-[80px]'>{row.getValue('id')}</div>,
-    enableSorting: false,
     enableHiding: false,
   },
   {
