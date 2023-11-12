@@ -1,4 +1,3 @@
-// import userList from '@/__mocks__/tasks/tasks.json';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

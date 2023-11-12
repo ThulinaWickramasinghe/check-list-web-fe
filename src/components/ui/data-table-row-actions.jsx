@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteTask, editTask } from '@/store/slices/task';
+import { removeTask, editTask } from '@/store/slices/task';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -59,7 +59,7 @@ export function DataTableRowActions({ row }) {
           </DialogTrigger>
           <DropdownMenuItem
             onSelect={() => {
-              dispatch(deleteTask(row.original.id));
+              dispatch(removeTask(row.original.id));
             }}
           >
             Delete

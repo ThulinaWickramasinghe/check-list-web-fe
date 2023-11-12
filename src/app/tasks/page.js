@@ -1,12 +1,22 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { columns } from '@/components/ui/columns';
 import { DataTable } from '@/components/ui/data-table';
 import { UserNav } from '@/components/ui/user-nav';
-import { useSelector } from 'react-redux';
+
+import { getAllTasks, reset } from '@/store/slices/task';
 
 export default function TaskPage() {
-  const tasks = useSelector((state) => state.task.tasks);
+  const dispatch = useDispatch();
+  const { tasks, getAllTasksIsSuccess } = useSelector((state) => state.task);
+
+  //get all tasks
+  useEffect(() => {
+    dispatch(getAllTasks());
+  }, []);
 
   return (
     <div className='hidden h-full flex-1 flex-col space-y-8 p-8 md:flex'>
