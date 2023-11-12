@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import taskService from '@/store/services/task';
 
 const initialState = {
@@ -226,42 +226,6 @@ export const taskSlice = createSlice({
       });
   },
 });
-
-// export const taskSlice = createSlice({
-//   name: 'task',
-//   initialState,
-//   reducers: {
-//     toggleStatus(state, action) {
-// state.tasks = state.tasks.map((task) => {
-//   if (task.id === action.payload.id) {
-//     task.status = task.status === 'todo' ? 'done' : 'todo';
-//   }
-
-//   return task;
-// });
-//     },
-//     deleteTask(state, action) {
-//       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
-//     },
-//     addTask(state, action) {
-//       state.tasks = [
-//         {
-//           id: `TASK-${initialState.tasks.length}`,
-//           title: action.payload.title,
-//         },
-//         ...state.tasks,
-//       ];
-//     },
-//     editTask(state, action) {
-//       state.tasks = state.tasks.map((task) => {
-//         if (task.id === action.payload.id) {
-//           task.title = action.payload.title;
-//         }
-//         return task;
-//       });
-//     },
-//   },
-// });
 
 export const { reset } = taskSlice.actions;
 export default taskSlice.reducer;
