@@ -18,7 +18,7 @@ export const columns = [
         <Checkbox
           checked={'done' === row.getValue('status')}
           onCheckedChange={() => {
-            store.dispatch(toggleStatus({ id: row.original.id }));
+            store.dispatch(toggleStatus({ id: row.original._id }));
           }}
           aria-label='Select row'
           className='translate-y-[2px]'
@@ -28,14 +28,14 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: 'title',
+    accessorKey: 'description',
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title='Description' />
     ),
     cell: ({ row }) => {
       return (
         <div className='flex space-x-2'>
-          <span className='font-medium'>{row.getValue('title')}</span>
+          <span className='font-medium'>{row.getValue('description')}</span>
         </div>
       );
     },

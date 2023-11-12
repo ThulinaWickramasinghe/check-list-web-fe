@@ -31,7 +31,9 @@ export function DataTableRowActions({ row }) {
   const [open, setOpen] = useState(false);
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    dispatch(editTask({ id: row.original.id, title: e.target.title.value }));
+    dispatch(
+      editTask({ id: row.original.id, description: e.target.description.value })
+    );
     setOpen(false);
   };
 
@@ -59,7 +61,7 @@ export function DataTableRowActions({ row }) {
           </DialogTrigger>
           <DropdownMenuItem
             onSelect={() => {
-              dispatch(removeTask(row.original.id));
+              dispatch(removeTask(row.original._id));
             }}
           >
             Delete
@@ -76,14 +78,14 @@ export function DataTableRowActions({ row }) {
           </DialogHeader>
           <div className='grid gap-4 py-4'>
             <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='title' className='text-right'>
+              <Label htmlFor='description' className='text-right'>
                 Title
               </Label>
               <Input
-                id='title'
-                name='title'
+                id='description'
+                name='description'
                 required
-                defaultValue={row.getValue('title')}
+                defaultValue={row.getValue('description')}
                 className='col-span-3'
               />
             </div>

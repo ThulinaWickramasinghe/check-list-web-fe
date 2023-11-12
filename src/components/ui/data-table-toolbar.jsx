@@ -24,7 +24,7 @@ export function DataTableToolbar({ table }) {
   const [open, setOpen] = useState(false);
   const handleCreateSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTask({ title: e.target.title.value }));
+    dispatch(addTask({ description: e.target.description.value }));
     setOpen(false);
   };
 
@@ -33,9 +33,9 @@ export function DataTableToolbar({ table }) {
       <div className='flex flex-1 items-center space-x-2'>
         <Input
           placeholder='Filter tasks...'
-          value={table.getColumn('title')?.getFilterValue() ?? ''}
+          value={table.getColumn('description')?.getFilterValue() ?? ''}
           onChange={(event) =>
-            table.getColumn('title')?.setFilterValue(event.target.value)
+            table.getColumn('description')?.setFilterValue(event.target.value)
           }
           className='h-8 w-[150px] lg:w-[250px]'
         />
@@ -67,12 +67,12 @@ export function DataTableToolbar({ table }) {
             </DialogHeader>
             <div className='grid gap-4 py-4'>
               <div className='grid grid-cols-4 items-center gap-4'>
-                <Label htmlFor='title' className='text-right'>
+                <Label htmlFor='description' className='text-right'>
                   Description
                 </Label>
                 <Input
-                  id='title'
-                  name='title'
+                  id='description'
+                  name='description'
                   required
                   defaultValue='Enter your task description here..'
                   className='col-span-3'

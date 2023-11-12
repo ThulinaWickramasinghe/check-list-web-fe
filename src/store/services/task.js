@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = `${process.env.BACKEND_URL}/tasks/v1`;
+const BASE_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/v1`;
 
 const config = (token) => {
   return {
@@ -13,13 +13,13 @@ const config = (token) => {
 const createTask = async (taskData, token) => {
   const response = await axios.post(BASE_URL + '/', taskData, config(token));
 
-  return response.data;
+  return response.data.data;
 };
 
 const getAllTasks = async (token) => {
   const response = await axios.get(BASE_URL + '/', config(token));
 
-  return response.data;
+  return response.data.data;
 };
 
 const getTaskById = async (taskId, token) => {

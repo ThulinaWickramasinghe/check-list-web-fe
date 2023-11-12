@@ -14,7 +14,8 @@ export const addTask = createAsyncThunk(
   'tasks/create',
   async (taskData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      // const token = thunkAPI.getState().auth.user.token;
+      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
       return await taskService.createTask(taskData, token);
     } catch (error) {
       const message =
@@ -32,7 +33,8 @@ export const updateTask = createAsyncThunk(
   'tasks/update',
   async (task, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      // const token = thunkAPI.getState().auth.user.token;
+      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
       return await taskService.updateTaskById(task, token);
     } catch (error) {
       const message =
@@ -50,7 +52,8 @@ export const getAllTasks = createAsyncThunk(
   'tasks/getAll',
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      // const token = thunkAPI.getState().auth.user.token;
+      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
       return await taskService.getAllTasks(token);
     } catch (error) {
       const message =
@@ -86,7 +89,8 @@ export const removeTask = createAsyncThunk(
   'tasks/delete',
   async (taskId, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
+      // const token = thunkAPI.getState().auth.user.token;
+      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
       return await taskService.deleteTaskById(taskId, token);
     } catch (error) {
       const message =
@@ -113,6 +117,7 @@ export const taskSlice = createSlice({
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.addTaskIsSuccess = true;
         state.tasks = [...state.tasks, action.payload];
       })
       .addCase(addTask.rejected, (state, action) => {
