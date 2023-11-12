@@ -7,7 +7,7 @@ import { columns } from '@/components/ui/columns';
 import { DataTable } from '@/components/ui/data-table';
 import { UserNav } from '@/components/ui/user-nav';
 
-import { getAllTasks, reset } from '@/store/slices/task';
+import { getAllTasks } from '@/store/slices/task';
 
 export default function TaskPage() {
   const dispatch = useDispatch();
