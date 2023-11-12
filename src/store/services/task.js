@@ -35,9 +35,8 @@ const updateTaskById = async (task, token) => {
 };
 
 const deleteTaskById = async (taskId, token) => {
-  const response = await axios.delete(BASE_URL + '/' + taskId, config(token));
-
-  return response.data;
+  await axios.delete(BASE_URL + '/' + taskId, config(token));
+  return { _id: taskId };
 };
 
 const taskService = {

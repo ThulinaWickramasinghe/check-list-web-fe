@@ -122,7 +122,7 @@ export const taskSlice = createSlice({
       })
       .addCase(addTask.rejected, (state, action) => {
         state.isLoading = false;
-        state.addTaskIsSuccess = true;
+        state.addTaskIsSuccess = false;
         state.message = action.payload;
       })
       .addCase(getAllTasks.pending, (state) => {
@@ -131,10 +131,11 @@ export const taskSlice = createSlice({
       .addCase(getAllTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.tasks = [...action.payload];
+        state.getAllTasksIsSuccess = false;
       })
       .addCase(getAllTasks.rejected, (state, action) => {
         state.isLoading = false;
-        state.addTaskIsSuccess = true;
+        state.getAllTasksIsSuccess = false;
         state.message = action.payload;
       })
       .addCase(removeTask.pending, (state) => {
@@ -145,10 +146,11 @@ export const taskSlice = createSlice({
         state.tasks = state.tasks.filter(
           (task) => task.id !== action.payload._id
         );
+        state.removeTaskIsSuccess = true;
       })
       .addCase(removeTask.rejected, (state, action) => {
         state.isLoading = false;
-        state.removeTaskIsSuccess = true;
+        state.removeTaskIsSuccess = false;
         state.message = action.payload;
       });
   },
