@@ -25,13 +25,19 @@ const getAllTasks = async (token) => {
 const getTaskById = async (taskId, token) => {
   const response = await axios.get(BASE_URL + '/' + taskId, config(token));
 
-  return response.data;
+  return response.data.data;
 };
 
-const updateTaskById = async (task, token) => {
-  const response = await axios.put(BASE_URL + '/', task.ID, config(token));
+const toggleTaskStatusById = async (taskId, token) => {
+  const response = await axios.patch(BASE_URL + '/' + taskId + '/status', {} ,config(token));
 
-  return response.data;
+  return response.data.data;
+};
+
+const updateTaskDescriptionById = async (taskId, taskDescription, token) => {
+  const response = await axios.patch(BASE_URL + '/' + taskId + '/description', {Description : taskDescription}, config(token));
+
+  return response.data.data;
 };
 
 const deleteTaskById = async (taskId, token) => {
@@ -43,7 +49,8 @@ const taskService = {
   createTask,
   getAllTasks,
   getTaskById,
-  updateTaskById,
+  toggleTaskStatusById,
+  updateTaskDescriptionById,
   deleteTaskById,
 };
 

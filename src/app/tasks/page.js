@@ -11,12 +11,11 @@ import { getAllTasks, reset } from '@/store/slices/task';
 
 export default function TaskPage() {
   const dispatch = useDispatch();
-  const { tasks, removeTaskIsSuccess } = useSelector((state) => state.task);
+  const { tasks } = useSelector((state) => state.task);
 
-  //get all tasks
   useEffect(() => {
     dispatch(getAllTasks());
-  }, [dispatch, removeTaskIsSuccess]);
+  }, []);
 
   return (
     <div className='hidden h-full flex-1 flex-col space-y-8 p-8 md:flex'>

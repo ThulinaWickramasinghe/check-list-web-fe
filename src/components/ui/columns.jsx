@@ -5,7 +5,7 @@ import { DataTableColumnHeader } from '@/components/ui/data-table-column-header'
 import { DataTableRowActions } from '@/components/ui/data-table-row-actions';
 
 import store from '@/store';
-import { toggleStatus } from '@/store/slices/task';
+import { toggleTaskStatus } from '@/store/slices/task';
 
 export const columns = [
   {
@@ -16,9 +16,9 @@ export const columns = [
     cell: ({ row }) => {
       return (
         <Checkbox
-          checked={'done' === row.getValue('status')}
+          checked={'done' === row.original.status}
           onCheckedChange={() => {
-            store.dispatch(toggleStatus({ id: row.original._id }));
+            store.dispatch(toggleTaskStatus({ _id: row.original._id }));
           }}
           aria-label='Select row'
           className='translate-y-[2px]'

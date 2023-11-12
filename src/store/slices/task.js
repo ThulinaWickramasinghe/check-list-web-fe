@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import taskService from '@/store/services/task';
 
 const initialState = {
@@ -8,6 +8,8 @@ const initialState = {
   addTaskIsSuccess: false,
   removeTaskIsSuccess: false,
   getAllTasksIsSuccess: false,
+  toggleTaskStatusIsSuccess: false,
+  updateTaskDescriptionIsSuccess: false
 };
 
 export const addTask = createAsyncThunk(
@@ -17,25 +19,6 @@ export const addTask = createAsyncThunk(
       // const token = thunkAPI.getState().auth.user.token;
       const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
       return await taskService.createTask(taskData, token);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-export const updateTask = createAsyncThunk(
-  'tasks/update',
-  async (task, thunkAPI) => {
-    try {
-      // const token = thunkAPI.getState().auth.user.token;
-      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
-      return await taskService.updateTaskById(task, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -73,6 +56,45 @@ export const getTask = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await taskService.getTaskById(taskId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const toggleTaskStatus = createAsyncThunk(
+  'tasks/toggleStatus',
+  async (taskData, thunkAPI) => {
+    try {
+      // const token = thunkAPI.getState().auth.user.token;
+      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+      return await taskService.toggleTaskStatusById(taskData._id,token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const updateTaskDescription = createAsyncThunk(
+  'tasks/updateDescription',
+  async (taskData, thunkAPI) => {
+    try {
+      // const token = thunkAPI.getState().auth.user.token;
+      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+
+      return await taskService.updateTaskDescriptionById(taskData._id,taskData.description,token);
     } catch (error) {
       const message =
         (error.response &&
@@ -131,7 +153,7 @@ export const taskSlice = createSlice({
       .addCase(getAllTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.tasks = [...action.payload];
-        state.getAllTasksIsSuccess = false;
+        state.getAllTasksIsSuccess = true;
       })
       .addCase(getAllTasks.rejected, (state, action) => {
         state.isLoading = false;
@@ -143,14 +165,59 @@ export const taskSlice = createSlice({
       })
       .addCase(removeTask.fulfilled, (state, action) => {
         state.isLoading = false;
+
         state.tasks = state.tasks.filter(
-          (task) => task.id !== action.payload._id
+          (task) => task._id !== action.payload._id
         );
+
         state.removeTaskIsSuccess = true;
       })
       .addCase(removeTask.rejected, (state, action) => {
         state.isLoading = false;
         state.removeTaskIsSuccess = false;
+        state.message = action.payload;
+      })
+      .addCase(toggleTaskStatus.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(toggleTaskStatus.fulfilled, (state, action) => {
+        state.isLoading = false;
+
+        state.tasks = state.tasks.map((task) => {
+          if (task._id === action.payload._id) {
+            task.status = action.payload.status;
+          }
+
+          return task;
+        });
+
+        state.toggleTaskStatusIsSuccess = true;
+        return state
+      })
+      .addCase(toggleTaskStatus.rejected, (state, action) => {
+        state.isLoading = false;
+        state.toggleTaskStatusIsSuccess = false;
+        state.message = action.payload;
+      })
+      .addCase(updateTaskDescription.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateTaskDescription.fulfilled, (state, action) => {
+        state.isLoading = false;
+
+        state.tasks = state.tasks.map((task) => {
+          if (task._id === action.payload._id) {
+            task.description = action.payload.description;
+          }
+
+          return task
+        });
+
+        state.updateTaskDescriptionIsSuccess = true;
+      })
+      .addCase(updateTaskDescription.rejected, (state, action) => {
+        state.isLoading = false;
+        state.updateTaskDescriptionIsSuccess = false;
         state.message = action.payload;
       });
   },
@@ -161,13 +228,13 @@ export const taskSlice = createSlice({
 //   initialState,
 //   reducers: {
 //     toggleStatus(state, action) {
-//       state.tasks = state.tasks.map((task) => {
-//         if (task.id === action.payload.id) {
-//           task.status = task.status === 'todo' ? 'done' : 'todo';
-//         }
+      // state.tasks = state.tasks.map((task) => {
+      //   if (task.id === action.payload.id) {
+      //     task.status = task.status === 'todo' ? 'done' : 'todo';
+      //   }
 
-//         return task;
-//       });
+      //   return task;
+      // });
 //     },
 //     deleteTask(state, action) {
 //       state.tasks = state.tasks.filter((task) => task.id !== action.payload);

@@ -1,6 +1,6 @@
 'use client';
 
-import { removeTask, editTask } from '@/store/slices/task';
+import { removeTask, updateTaskDescription } from '@/store/slices/task';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -32,7 +32,7 @@ export function DataTableRowActions({ row }) {
   const handleEditSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      editTask({ id: row.original.id, description: e.target.description.value })
+      updateTaskDescription({ _id: row.original._id, description: e.target.description.value })
     );
     setOpen(false);
   };
