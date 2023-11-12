@@ -29,13 +29,21 @@ const getTaskById = async (taskId, token) => {
 };
 
 const toggleTaskStatusById = async (taskId, token) => {
-  const response = await axios.patch(BASE_URL + '/' + taskId + '/status', {} ,config(token));
+  const response = await axios.patch(
+    BASE_URL + '/' + taskId + '/status',
+    {},
+    config(token)
+  );
 
   return response.data.data;
 };
 
 const updateTaskDescriptionById = async (taskId, taskDescription, token) => {
-  const response = await axios.patch(BASE_URL + '/' + taskId + '/description', {Description : taskDescription}, config(token));
+  const response = await axios.patch(
+    BASE_URL + '/' + taskId + '/description',
+    { Description: taskDescription },
+    config(token)
+  );
 
   return response.data.data;
 };

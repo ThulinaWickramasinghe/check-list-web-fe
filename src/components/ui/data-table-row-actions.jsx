@@ -32,7 +32,10 @@ export function DataTableRowActions({ row }) {
   const handleEditSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      updateTaskDescription({ _id: row.original._id, description: e.target.description.value })
+      updateTaskDescription({
+        _id: row.original._id,
+        description: e.target.description.value,
+      })
     );
     setOpen(false);
   };

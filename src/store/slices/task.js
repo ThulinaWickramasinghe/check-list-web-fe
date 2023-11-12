@@ -9,7 +9,7 @@ const initialState = {
   removeTaskIsSuccess: false,
   getAllTasksIsSuccess: false,
   toggleTaskStatusIsSuccess: false,
-  updateTaskDescriptionIsSuccess: false
+  updateTaskDescriptionIsSuccess: false,
 };
 
 export const addTask = createAsyncThunk(
@@ -74,7 +74,7 @@ export const toggleTaskStatus = createAsyncThunk(
     try {
       // const token = thunkAPI.getState().auth.user.token;
       const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
-      return await taskService.toggleTaskStatusById(taskData._id,token);
+      return await taskService.toggleTaskStatusById(taskData._id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -94,7 +94,11 @@ export const updateTaskDescription = createAsyncThunk(
       // const token = thunkAPI.getState().auth.user.token;
       const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 
-      return await taskService.updateTaskDescriptionById(taskData._id,taskData.description,token);
+      return await taskService.updateTaskDescriptionById(
+        taskData._id,
+        taskData.description,
+        token
+      );
     } catch (error) {
       const message =
         (error.response &&
@@ -192,7 +196,7 @@ export const taskSlice = createSlice({
         });
 
         state.toggleTaskStatusIsSuccess = true;
-        return state
+        return state;
       })
       .addCase(toggleTaskStatus.rejected, (state, action) => {
         state.isLoading = false;
@@ -210,7 +214,7 @@ export const taskSlice = createSlice({
             task.description = action.payload.description;
           }
 
-          return task
+          return task;
         });
 
         state.updateTaskDescriptionIsSuccess = true;
@@ -228,13 +232,13 @@ export const taskSlice = createSlice({
 //   initialState,
 //   reducers: {
 //     toggleStatus(state, action) {
-      // state.tasks = state.tasks.map((task) => {
-      //   if (task.id === action.payload.id) {
-      //     task.status = task.status === 'todo' ? 'done' : 'todo';
-      //   }
+// state.tasks = state.tasks.map((task) => {
+//   if (task.id === action.payload.id) {
+//     task.status = task.status === 'todo' ? 'done' : 'todo';
+//   }
 
-      //   return task;
-      // });
+//   return task;
+// });
 //     },
 //     deleteTask(state, action) {
 //       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
