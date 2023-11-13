@@ -1,6 +1,10 @@
 'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/common/avatar';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/components/ui/common/avatar';
 import { Button } from '@/components/ui/common/button';
 import {
   DropdownMenu,
