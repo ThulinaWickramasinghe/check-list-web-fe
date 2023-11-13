@@ -74,7 +74,7 @@ export function DataTableToolbar({ table }) {
                   id='description'
                   name='description'
                   required
-                  defaultValue='Enter your task description here..'
+                  placeholder='Enter your task description here..'
                   className='col-span-3'
                 />
               </div>

@@ -1,5 +1,6 @@
 import { Inter as FontSans } from 'next/font/google';
 import { Providers } from '@/store/providers';
+import { Toaster } from '@/components/ui/common/toaster';
 
 import './globals.css';
 import { cn } from '../lib/utils';
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
           )}
         >
           {children}
+          <Toaster />
         </body>
       </html>
     </Providers>

@@ -35,16 +35,7 @@ export function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
           <Avatar className='h-9 w-9'>
-            <AvatarImage src='/avatars/03.png' alt='@thulina' />
-            <AvatarFallback>
-              {user?.name.split(' ').length > 1
-                ? user.name
-                    .split(' ')
-                    .map((name) => name.charAt(0))
-                    .join('')
-                    .toUpperCase()
-                : user?.name.charAt(0).toUpperCase()}
-            </AvatarFallback>
+            <AvatarImage src='/me.png' alt='Profile Picture' />
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

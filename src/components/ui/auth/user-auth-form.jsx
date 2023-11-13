@@ -9,20 +9,26 @@ import { Label } from '@/components/ui/common/label';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '@/store/slices/auth';
+import { useToast } from '@/components/ui/common/use-toast';
 
 export function UserAuthForm({ className, ...props }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { toast } = useToast();
 
   const { isLoginSuccess, isLoginError } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isLoginSuccess) {
-      router.push('/tasks');
+      router.push('/');
     }
 
     if (isLoginError) {
-      alert('Invalid credentilas');
+      toast({
+        variant: 'destructive',
+        title: 'Login Failed!',
+        description: 'Check your login credentials.',
+      });
     }
   }, [isLoginSuccess, isLoginError]);
 
