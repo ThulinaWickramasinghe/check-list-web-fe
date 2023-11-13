@@ -11,11 +11,18 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useRouter } from 'next/navigation';
+import { useSelector } from 'react-redux';
+import { logout } from '@/store/slices/auth';
+import { useDispatch } from 'react-redux';
 
 export function UserNav() {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.auth?.user?.user);
 
   const handleLogout = () => {
+    dispatch(logout());
     router.push('/auth/login');
   };
 
@@ -25,7 +32,15 @@ export function UserNav() {
         <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
           <Avatar className='h-9 w-9'>
             <AvatarImage src='/avatars/03.png' alt='@thulina' />
-            <AvatarFallback>TW</AvatarFallback>
+            <AvatarFallback>
+              {user?.name.split(' ').length > 1
+                ? user.name
+                    .split(' ')
+                    .map((name) => name.charAt(0))
+                    .join('')
+                    .toUpperCase()
+                : user?.name.charAt(0).toUpperCase()}
+            </AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -33,10 +48,10 @@ export function UserNav() {
         <DropdownMenuLabel className='font-normal'>
           <div className='flex flex-col space-y-1'>
             <p className='text-sm font-medium leading-none'>
-              Thulina Wickramasinghe
+              {user?.name ?? 'Unknown'}
             </p>
             <p className='text-muted-foreground text-xs leading-none'>
-              thulina99@gmail.com
+              {user?.email ?? 'Unknown'}
             </p>
           </div>
         </DropdownMenuLabel>

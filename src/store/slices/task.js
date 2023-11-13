@@ -16,16 +16,11 @@ export const addTask = createAsyncThunk(
   'tasks/create',
   async (taskData, thunkAPI) => {
     try {
-      // const token = thunkAPI.getState().auth.user.token;
-      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+      const token = thunkAPI.getState().auth.user.access_token;
       return await taskService.createTask(taskData, token);
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        error.response?.data?.message ?? error.message ?? error.toString();
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -35,16 +30,11 @@ export const getAllTasks = createAsyncThunk(
   'tasks/getAll',
   async (_, thunkAPI) => {
     try {
-      // const token = thunkAPI.getState().auth.user.token;
-      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+      const token = thunkAPI.getState().auth.user.access_token;
       return await taskService.getAllTasks(token);
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        error.response?.data?.message ?? error.message ?? error.toString();
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -58,11 +48,7 @@ export const getTask = createAsyncThunk(
       return await taskService.getTaskById(taskId, token);
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        error.response?.data?.message ?? error.message ?? error.toString();
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -72,16 +58,11 @@ export const toggleTaskStatus = createAsyncThunk(
   'tasks/toggleStatus',
   async (taskData, thunkAPI) => {
     try {
-      // const token = thunkAPI.getState().auth.user.token;
-      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+      const token = thunkAPI.getState().auth.user.access_token;
       return await taskService.toggleTaskStatusById(taskData._id, token);
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        error.response?.data?.message ?? error.message ?? error.toString();
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -91,8 +72,7 @@ export const updateTaskDescription = createAsyncThunk(
   'tasks/updateDescription',
   async (taskData, thunkAPI) => {
     try {
-      // const token = thunkAPI.getState().auth.user.token;
-      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+      const token = thunkAPI.getState().auth.user.access_token;
 
       return await taskService.updateTaskDescriptionById(
         taskData._id,
@@ -101,11 +81,7 @@ export const updateTaskDescription = createAsyncThunk(
       );
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        error.response?.data?.message ?? error.message ?? error.toString();
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -115,16 +91,11 @@ export const removeTask = createAsyncThunk(
   'tasks/delete',
   async (taskId, thunkAPI) => {
     try {
-      // const token = thunkAPI.getState().auth.user.token;
-      const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+      const token = thunkAPI.getState().auth.user.access_token;
       return await taskService.deleteTaskById(taskId, token);
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        error.response?.data?.message ?? error.message ?? error.toString();
       return thunkAPI.rejectWithValue(message);
     }
   }
