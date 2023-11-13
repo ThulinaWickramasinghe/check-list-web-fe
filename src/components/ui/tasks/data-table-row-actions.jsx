@@ -43,15 +43,17 @@ export function DataTableRowActions({ row }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant='ghost'
-            className='data-[state=open]:bg-muted flex h-8 w-8 p-0'
-          >
-            <DotsHorizontalIcon className='h-4 w-4' />
-            <span className='sr-only'>Open menu</span>
-          </Button>
-        </DropdownMenuTrigger>
+        <div className='flex justify-end'>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant='ghost'
+              className='data-[state=open]:bg-muted flex h-8 w-8 p-0'
+            >
+              <DotsHorizontalIcon className='h-4 w-4' />
+              <span className='sr-only'>Open menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+        </div>
         <DropdownMenuContent align='end' className='w-[160px]'>
           <DialogTrigger>
             <DropdownMenuItem
