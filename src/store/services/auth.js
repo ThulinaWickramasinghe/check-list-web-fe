@@ -15,7 +15,7 @@ const register = async (userData) => {
 };
 
 const login = async (userData) => {
-  const response = await axios.post(BASE_URL + '/login', userData);
+  const response = await axios.post(BASE_URL + '/login', userData).then();
 
   if (response?.data?.data) {
     localStorage.setItem('user', JSON.stringify(response.data.data));

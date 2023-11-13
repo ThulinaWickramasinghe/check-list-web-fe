@@ -75,18 +75,18 @@ export const authSlice = createSlice({
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true;
+        state.isLoginError = false;
+        state.isLoginSuccess = false;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoginSuccess = true;
-        state.isLoginError = false;
         state.user = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.user = null;
         state.isLoginError = true;
-        state.isLoginSuccess = false;
         state.message = action.payload;
       })
       .addCase(logout.fulfilled, (state, action) => {
