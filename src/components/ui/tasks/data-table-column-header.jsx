@@ -9,14 +9,14 @@ import {
 import { Column } from '@tanstack/react-table';
 
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/common/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/ui/common/dropdown-menu';
 
 export function DataTableColumnHeader({ column, title, className }) {
   if (!column.getCanSort()) {

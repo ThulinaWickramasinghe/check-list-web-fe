@@ -3,7 +3,7 @@
 import { UserAuthForm } from '@/components/ui/auth/user-auth-form';
 import Image from 'next/image';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <div className='container relative hidden h-[100vh] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0'>
       <div className='bg-muted relative hidden h-full flex-col p-10 text-white dark:border-r lg:flex'>
@@ -31,10 +31,10 @@ export default function LoginPage() {
         <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
           <div className='flex flex-col space-y-2 text-center'>
             <h1 className='text-2xl font-semibold tracking-tight'>
-              Login to your account
+              Create an account
             </h1>
             <p className='text-muted-foreground text-sm'>
-              Enter your credentials below to login
+              Enter your details to register
             </p>
           </div>
           <UserAuthForm />

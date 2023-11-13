@@ -6,7 +6,7 @@ import { authSlice } from './slices/auth';
 export const store = configureStore({
   reducer: {
     task: taskSlice.reducer,
-    auth: authSlice.actions,
+    auth: authSlice.reducer,
   },
 });
 

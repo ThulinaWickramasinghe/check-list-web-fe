@@ -1,12 +1,12 @@
 'use client';
 
-import { deleteTask, editTask } from '@/store/slices/task';
+import { removeTask, updateTaskDescription } from '@/store/slices/task';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/common/button';
 import {
   Dialog,
   DialogContent,
@@ -15,23 +15,28 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from '@/components/ui/common/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/ui/common/dropdown-menu';
 
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/common/input';
+import { Label } from '@/components/ui/common/label';
 
 export function DataTableRowActions({ row }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    dispatch(editTask({ id: row.original.id, title: e.target.title.value }));
+    dispatch(
+      updateTaskDescription({
+        _id: row.original._id,
+        description: e.target.description.value,
+      })
+    );
     setOpen(false);
   };
 
@@ -59,7 +64,7 @@ export function DataTableRowActions({ row }) {
           </DialogTrigger>
           <DropdownMenuItem
             onSelect={() => {
-              dispatch(deleteTask(row.original.id));
+              dispatch(removeTask(row.original._id));
             }}
           >
             Delete
@@ -76,14 +81,14 @@ export function DataTableRowActions({ row }) {
           </DialogHeader>
           <div className='grid gap-4 py-4'>
             <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='title' className='text-right'>
+              <Label htmlFor='description' className='text-right'>
                 Title
               </Label>
               <Input
-                id='title'
-                name='title'
+                id='description'
+                name='description'
                 required
-                defaultValue={row.getValue('title')}
+                defaultValue={row.getValue('description')}
                 className='col-span-3'
               />
             </div>
