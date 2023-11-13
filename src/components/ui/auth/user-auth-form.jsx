@@ -20,12 +20,10 @@ export function UserAuthForm({ className, ...props }) {
 
   useEffect(() => {
     if (isLoginSuccess) {
-      router.push('/tasks');
+      router.push('/');
     }
-    console.log('login sdfasdf');
 
     if (isLoginError) {
-      console.log('login error');
       toast({
         variant: 'destructive',
         title: 'Login Failed!',
