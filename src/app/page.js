@@ -12,13 +12,13 @@ import { useRouter } from 'next/navigation';
 
 export default function TaskPage() {
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   const { tasks } = useSelector((state) => state.task);
 
   useEffect(() => {
-    if(localStorage.getItem('user') == null){
-      router.push('/auth/login')
+    if (localStorage.getItem('user') == null) {
+      router.push('/auth/login');
     }
 
     dispatch(getAllTasks());
