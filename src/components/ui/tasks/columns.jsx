@@ -1,8 +1,8 @@
 'use client';
 
-import { Checkbox } from '@/components/ui/checkbox';
-import { DataTableColumnHeader } from '@/components/ui/data-table-column-header';
-import { DataTableRowActions } from '@/components/ui/data-table-row-actions';
+import { Checkbox } from '@/components/ui/common/checkbox';
+import { DataTableColumnHeader } from '@/components/ui/tasks/data-table-column-header';
+import { DataTableRowActions } from '@/components/ui/tasks/data-table-row-actions';
 
 import store from '@/store';
 import { toggleTaskStatus } from '@/store/slices/task';

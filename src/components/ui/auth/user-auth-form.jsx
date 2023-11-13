@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/common/button';
+import { Input } from '@/components/ui/common/input';
+import { Label } from '@/components/ui/common/label';
 
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';

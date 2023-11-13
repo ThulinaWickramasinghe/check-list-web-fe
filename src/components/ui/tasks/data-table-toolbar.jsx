@@ -4,7 +4,7 @@ import { Cross2Icon, PlusIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/common/button';
 import {
   Dialog,
   DialogContent,
@@ -13,9 +13,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+} from '@/components/ui/common/dialog';
+import { Input } from '@/components/ui/common/input';
+import { Label } from '@/components/ui/common/label';
 import { addTask } from '@/store/slices/task';
 
 export function DataTableToolbar({ table }) {

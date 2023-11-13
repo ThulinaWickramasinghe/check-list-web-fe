@@ -19,10 +19,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/components/ui/common/table';
 
-import { DataTablePagination } from '@/components/ui/data-table-pagination';
-import { DataTableToolbar } from '@/components/ui/data-table-toolbar';
+import { DataTablePagination } from '@/components/ui/tasks/data-table-pagination';
+import { DataTableToolbar } from '@/components/ui/tasks/data-table-toolbar';
 
 export function DataTable({ columns, data }) {
   const [rowSelection, setRowSelection] = React.useState({});

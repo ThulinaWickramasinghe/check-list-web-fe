@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/common/button';
 import {
   Dialog,
   DialogContent,
@@ -15,16 +15,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from '@/components/ui/common/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/ui/common/dropdown-menu';
 
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/common/input';
+import { Label } from '@/components/ui/common/label';
 
 export function DataTableRowActions({ row }) {
   const dispatch = useDispatch();

@@ -3,9 +3,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { columns } from '@/components/ui/columns';
-import { DataTable } from '@/components/ui/data-table';
-import { UserNav } from '@/components/ui/user-nav';
+import { columns } from '@/components/ui/tasks/columns';
+import { DataTable } from '@/components/ui/tasks/data-table';
+import { UserNav } from '@/components/ui/tasks/user-nav';
 
 import { getAllTasks } from '@/store/slices/task';
 

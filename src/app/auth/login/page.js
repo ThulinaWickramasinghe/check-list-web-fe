@@ -1,6 +1,6 @@
 'use client';
 
-import { UserAuthForm } from '@/components/ui/user-auth-form';
+import { UserAuthForm } from '@/components/ui/auth/user-auth-form';
 import Image from 'next/image';
 
 export default function LoginPage() {
