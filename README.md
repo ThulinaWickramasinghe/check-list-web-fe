@@ -14,3 +14,9 @@ npm install
 3. Add backend URL to a .env.local file at root.
 
   ```BACKEND_URL=http://localhost:8080/api```
+
+4. Start the development server.
+
+```bash
+npm run dev
+```
